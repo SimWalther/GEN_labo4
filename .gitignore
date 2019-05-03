@@ -1,0 +1,23 @@
+# IntelliJ, Java
+.idea/
+target/
+out/
+bin/
+*.iml
+*.class
+*.jar
+
+# vim
+tags
+
+# CMake
+cmake-build-*/
+
+# File-based project format
+*.iws
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+modules.xml
+*.ipr
