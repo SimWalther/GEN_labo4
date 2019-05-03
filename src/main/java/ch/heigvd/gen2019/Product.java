@@ -36,7 +36,7 @@ public class Product {
         return currency;
     }
 
-    String getSizeFor() {
+    public String getSizeFor() {
         switch (getSize()) {
             case 1:
                 return "XS";
@@ -52,6 +52,19 @@ public class Product {
                 return "XXL";
             default:
                 return "Invalid Size";
+        }
+    }
+
+    public String getColorFor() {
+        switch (getColor()) {
+            case 1:
+                return "blue";
+            case 2:
+                return "red";
+            case 3:
+                return "yellow";
+            default:
+                return "no color";
         }
     }
 }
