@@ -23,26 +23,7 @@ public class OrdersWriter {
             for (int j = 0; j < order.getProductsCount(); j++) {
                 Product product = order.getProduct(j);
 
-                sb.append("{");
-                sb.append("\"code\": \"");
-                sb.append(product.getCode());
-                sb.append("\", ");
-                sb.append("\"color\": \"");
-                sb.append(product.getColorFor());
-                sb.append("\", ");
-
-                if (product.getSize() != Product.SIZE_NOT_APPLICABLE) {
-                    sb.append("\"size\": \"");
-                    sb.append(product.getSizeFor());
-                    sb.append("\", ");
-                }
-
-                sb.append("\"price\": ");
-                sb.append(product.getPrice());
-                sb.append(", ");
-                sb.append("\"currency\": \"");
-                sb.append(product.getCurrency());
-                sb.append("\"}, ");
+                product.getContents(sb);
             }
 
             if (order.getProductsCount() > 0) {

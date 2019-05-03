@@ -67,4 +67,27 @@ public class Product {
                 return "no color";
         }
     }
+
+    public void getContents(StringBuffer sb) {
+        sb.append("{");
+        sb.append("\"code\": \"");
+        sb.append(getCode());
+        sb.append("\", ");
+        sb.append("\"color\": \"");
+        sb.append(getColorFor());
+        sb.append("\", ");
+
+        if (getSize() != SIZE_NOT_APPLICABLE) {
+            sb.append("\"size\": \"");
+            sb.append(getSizeFor());
+            sb.append("\", ");
+        }
+
+        sb.append("\"price\": ");
+        sb.append(getPrice());
+        sb.append(", ");
+        sb.append("\"currency\": \"");
+        sb.append(getCurrency());
+        sb.append("\"}, ");
+    }
 }
