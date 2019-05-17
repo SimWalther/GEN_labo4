@@ -1,38 +1,55 @@
 package ch.heigvd.gen2019;
 
-public class Product {
-    public static final int SIZE_NOT_APPLICABLE = -1;
+import ch.heigvd.color.Color;
+import ch.heigvd.color.NoColor;
+import ch.heigvd.size.NoSize;
+import ch.heigvd.size.Size;
+
+public class Product implements ContentDisplayable {
     private String code;
-    private int color;
-    private int size;
+    private Color color;
+    private Size size;
     private double price;
     private String currency;
 
-    public Product(String code, int color, int size, double price, String currency) {
+    public Product(String code, Color color, Size size, double price, String currency) {
         this.code = code;
+
+        if(color == null) {
+            color = new NoColor();
+        }
+
         this.color = color;
+
+        if(size == null) {
+            size = new NoSize();
+        }
+
         this.size = size;
         this.price = price;
         this.currency = currency;
     }
 
-    public String getCode() {
-        return code;
-    }
+    public void getContents(StringBuffer sb) {
+        sb.append("{");
+        sb.append("\"code\": \"");
+        sb.append(code);
+        sb.append("\", ");
+        sb.append("\"color\": \"");
+        sb.append(color);
+        sb.append("\", ");
 
-    public int getColor() {
-        return color;
-    }
+        if (!size.getClass().equals(NoSize.class)) {
+            sb.append("\"size\": \"");
+            sb.append(size);
+            sb.append("\", ");
+        }
 
-    public int getSize() {
-        return size;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getCurrency() {
-        return currency;
+        sb.append("\"price\": ");
+        sb.append(price);
+        sb.append(", ");
+        sb.append("\"currency\": \"");
+        sb.append(currency);
+        sb.append("\"}, ");
     }
 }
