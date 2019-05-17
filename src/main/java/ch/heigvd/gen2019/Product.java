@@ -2,16 +2,17 @@ package ch.heigvd.gen2019;
 
 import ch.heigvd.color.Color;
 import ch.heigvd.color.NoColor;
+import ch.heigvd.size.NoSize;
+import ch.heigvd.size.Size;
 
 public class Product {
-    public static final int SIZE_NOT_APPLICABLE = -1;
     private String code;
     private Color color;
-    private int size;
+    private Size size;
     private double price;
     private String currency;
 
-    public Product(String code, Color color, int size, double price, String currency) {
+    public Product(String code, Color color, Size size, double price, String currency) {
         this.code = code;
 
         if(color == null) {
@@ -19,6 +20,11 @@ public class Product {
         }
 
         this.color = color;
+
+        if(size == null) {
+            size = new NoSize();
+        }
+
         this.size = size;
         this.price = price;
         this.currency = currency;
@@ -28,35 +34,12 @@ public class Product {
         return code;
     }
 
-    public int getSize() {
-        return size;
-    }
-
     public double getPrice() {
         return price;
     }
 
     public String getCurrency() {
         return currency;
-    }
-
-    public String getSizeFor() {
-        switch (getSize()) {
-            case 1:
-                return "XS";
-            case 2:
-                return "S";
-            case 3:
-                return "M";
-            case 4:
-                return "L";
-            case 5:
-                return "XL";
-            case 6:
-                return "XXL";
-            default:
-                return "Invalid Size";
-        }
     }
 
     public void getContents(StringBuffer sb) {
@@ -68,9 +51,9 @@ public class Product {
         sb.append(color);
         sb.append("\", ");
 
-        if (getSize() != SIZE_NOT_APPLICABLE) {
+        if (!size.getClass().equals(NoSize.class)) {
             sb.append("\"size\": \"");
-            sb.append(getSizeFor());
+            sb.append(size);
             sb.append("\", ");
         }
 
