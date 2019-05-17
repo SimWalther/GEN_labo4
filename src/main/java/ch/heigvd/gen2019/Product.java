@@ -1,6 +1,7 @@
 package ch.heigvd.gen2019;
 
 import ch.heigvd.color.Color;
+import ch.heigvd.color.NoColor;
 
 public class Product {
     public static final int SIZE_NOT_APPLICABLE = -1;
@@ -12,6 +13,11 @@ public class Product {
 
     public Product(String code, Color color, int size, double price, String currency) {
         this.code = code;
+
+        if(color == null) {
+            color = new NoColor();
+        }
+
         this.color = color;
         this.size = size;
         this.price = price;
