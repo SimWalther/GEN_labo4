@@ -5,7 +5,7 @@ import ch.heigvd.color.NoColor;
 import ch.heigvd.size.NoSize;
 import ch.heigvd.size.Size;
 
-public class Product {
+public class Product implements ContentDisplayable {
     private String code;
     private Color color;
     private Size size;

@@ -10,18 +10,12 @@ public class OrdersWriter {
     }
 
     public String getContents() {
-        StringBuffer sb = new StringBuffer("{\"orders\": [");
+        StringBuffer sb = new StringBuffer("{\"orders\":");
 
-        for (int i = 0; i < orders.size(); i++) {
-            Order order = orders.get(i);
-            order.getOrderContents(sb);
-        }
+        // nous n'avons pas eut de meilleur idée pour résoudre la duplication de code
+        Utils.displayList(sb, orders);
 
-        if (orders.size() > 0) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
-
-        return sb.append("]}").toString();
+        return sb.append("}").toString();
     }
 
 }
