@@ -11,10 +11,6 @@ public class Order {
         this.id = id;
     }
 
-    public int getOrderId() {
-        return id;
-    }
-
     public int getProductsCount() {
         return products.size();
     }
@@ -30,7 +26,7 @@ public class Order {
     public void getOrderContents(StringBuffer sb) {
         sb.append("{");
         sb.append("\"id\": ");
-        sb.append(getOrderId());
+        sb.append(id);
         sb.append(", ");
         sb.append("\"products\": [");
 
