@@ -11,14 +11,6 @@ public class Order {
         this.id = id;
     }
 
-    public int getProductsCount() {
-        return products.size();
-    }
-
-    public Product getProduct(int j) {
-        return products.get(j);
-    }
-
     public void AddProduct(Product product) {
         products.add(product);
     }
@@ -30,12 +22,12 @@ public class Order {
         sb.append(", ");
         sb.append("\"products\": [");
 
-        for (int j = 0; j < getProductsCount(); j++) {
+        for (int j = 0; j < products.size(); j++) {
 
-            getProduct(j).getContents(sb);
+            products.get(j).getContents(sb);
         }
 
-        if (getProductsCount() > 0) {
+        if (products.size() > 0) {
             sb.delete(sb.length() - 2, sb.length());
         }
 
