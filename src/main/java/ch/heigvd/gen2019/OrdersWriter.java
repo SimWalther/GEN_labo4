@@ -1,10 +1,9 @@
 package ch.heigvd.gen2019;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrdersWriter {
-    private List<Order> orders = new ArrayList<Order>();
+    private List<Order> orders;
 
     public OrdersWriter(List<Order> orders) {
         this.orders = orders;
